@@ -1,17 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+class 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const getApiData = async (url) => {
+    let response= await fetch(url);
+    if(!response.ok){
+        throw new Error(`Ups, smth goes wrong at ${url} with error ${response.status}`)
+    }
+    let data = await response.json();
+    return data;
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+getApiData('https://swapi.dev/api/people/1')
+    .then(res => console.log(res.name))
