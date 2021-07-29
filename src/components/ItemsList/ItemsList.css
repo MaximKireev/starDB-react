@@ -1,0 +1,9 @@
+.items-list-wrapper {
+    width: 45%;
+}
+.list-group-item {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #485056;
+    border-radius: 5px;
+}

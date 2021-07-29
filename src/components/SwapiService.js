@@ -21,8 +21,9 @@ export default class SwapiService extends Component{
     getAllPlanets(){
         return this.getResources('/planets/')
     }
-    getPlanet(id){
-        return this.getResources(`/planets/${id}`)
+    async getPlanet(id){
+        let data = await this.getResources(`/planets/${id}`);
+        return data
     }
     getAllStarships(){
         return this.getResources('/starships/')
