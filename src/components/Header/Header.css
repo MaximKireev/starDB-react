@@ -1,0 +1,31 @@
+.header-wrapper {
+    width: 100%;
+    height: 50px;
+    background-color: #393939;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    color: #FFE300;
+    font-weight: bold;
+    font-size: 35px;
+    margin-right: 50px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.main-header-list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 300px;
+    align-items: center;
+    margin-bottom: 0;
+   
+}
+.header-list-item > a {
+    color: #6cde1b;
+    text-decoration: none;
+
+}
