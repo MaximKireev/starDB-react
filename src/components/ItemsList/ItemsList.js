@@ -8,7 +8,7 @@ import Loader from "../Loader/Loader.js";
 
 export default class ItemsList extends Component {
 
-        key = 100;
+
         swapi = new SwapiService();
         state = {
             allPlanets: [],
@@ -63,3 +63,7 @@ class PlanetsListFragment extends Component{
 
 
 }
+
+
+
+

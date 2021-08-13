@@ -14,13 +14,7 @@ export default class App extends Component {
            this.swapi = new SwapiService()
            this.state = {
                selectedPlanet: null,
-               defaultPlanet: {
-                   url: 'https://raw.githubusercontent.com/tbone849/star-wars-guide/master/build/assets/img/planets/21.jpg',
-                   name: 'Tatooine',
-                   population: '200000',
-                   rotationPeriod: '24',
-                   diameter: '10450'
-               }
+
            }
            this.setPlanet()
        }

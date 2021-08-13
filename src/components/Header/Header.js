@@ -10,6 +10,7 @@ export default class Header extends Component {
                     <li className="header-list-item"><a href="">People</a></li>
                     <li className="header-list-item"><a href="">Planets</a></li>
                     <li className="header-list-item"><a href="">Starships</a></li>
+                    <li className="header-list-item"><a href="">Vehicles</a></li>
                 </ul>
             </header>
         );

@@ -13,45 +13,30 @@ export default class ItemsDetails extends Component {
 
     render() {
         const {loaded} = this.state
-        const {selectedPlanet, defaultPlanet} = this.props.planets;
+        const {selectedPlanet} = this.props.planets;
 
         return (
                     <ErrorBoundary>
-                        {!loaded?<Loader /> : <PlanetView selectedPlanet = {selectedPlanet} defaultPlanet = {defaultPlanet}/>
-                        }
+                        {!loaded?<Loader /> : <PlanetView selectedPlanet = {selectedPlanet} />}
                     </ErrorBoundary>
 
         );
     }
 }
-const PlanetView = ({selectedPlanet, defaultPlanet}) => {
+const PlanetView = ({selectedPlanet}) => {
 
     return (
         <div className='item-details-wrapper w-50'>
             {selectedPlanet?
                 <SelectedPlanet selectedPlanet = {selectedPlanet}/> :
-                <DefaultPlanet defaultPlanet = {defaultPlanet} />}
+                <DefaultPlanet />}
         </div>
     )
 }
 
-const DefaultPlanet = ({defaultPlanet}) => {
+const DefaultPlanet = () => {
     return (
-        <React.Fragment>
-        <img src={
-            "https://raw.githubusercontent.com/tbone849/star-wars-guide/master/build/assets/img/planets/21.jpg"}
-             alt="info-img"
-             width='150px'
-             height='150px'/>
-
-    <div className="list-group w-50">
-        <h3 className= 'item-name'>Tatooine</h3>
-        <a href="#" className="list-group-item list-group-item-action">{`Population: ${defaultPlanet.population}`}</a>
-        <a href="#" className="list-group-item list-group-item-action">{`Rotaion period: ${defaultPlanet.rotationPeriod}`}</a>
-        <a href="#" className="list-group-item list-group-item-action">{`Diameter: ${defaultPlanet.diameter}`}</a>
-    </div>
-            </React.Fragment>
-
+        <h3>No items to display</h3>
             )
 }
 
