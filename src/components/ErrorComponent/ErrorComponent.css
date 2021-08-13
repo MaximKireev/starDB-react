@@ -1,0 +1,12 @@
+.error_wrapper {
+    width: 250px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #F2A602;
+    margin: 0 auto;
+    text-align: center;
+}
+.death_star {
+    display: block;
+    margin: 0 auto;
+}

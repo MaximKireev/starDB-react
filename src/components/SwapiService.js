@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 
 
 export default class SwapiService extends Component{
 
-    _apiURL = 'https://swapi.dev/api';
+    _apiURL = 'https://www.swapi.tech/api/';
 
-    async getResources (url) {
+     getResources = async (url) => {
         let response= await fetch(`${this._apiURL}${url}`);
         if(!response.ok){
             throw new Error(`Ups, smth goes wrong at ${this._apiURL}${url} with error ${response.status}`)}
@@ -18,13 +18,17 @@ export default class SwapiService extends Component{
     getPerson(id){
         return this.getResources(`/people/${id}`)
     }
-    getAllPlanets(){
-        return this.getResources('/planets/')
+     getAllPlanets = async() => {
+        let planets = await this.getResources('/planets/');
+        return planets.results.map(planet => this._transformPlanet(planet))
     }
-    async getPlanet(id){
-        let data = await this.getResources(`/planets/${id}`);
-        return data
-    }
+    getPlanet = async (id) => {
+        let planet = await this.getResources(`/planets/${id}`);
+
+        return this._transformPlanet(planet.result.properties, planet.result.uid)
+        }
+
+
     getAllStarships(){
         return this.getResources('/starships/')
     }
@@ -49,6 +53,22 @@ export default class SwapiService extends Component{
     getSpeci(id){
         return this.getResources(`/species/${id}`)
     }
+    _transformPlanet = (planet, uid) => {
 
+        //let id = this._extractId(planet.url)
+        return {
+            id: planet.uid || uid,
+            loaded: true,
+            name: planet.name,
+            population: planet.population,
+            rotationPeriod: planet.rotation_period,
+            diameter: planet.diameter}
+
+
+    }
+    _extractId = (url) => {
+        let regex = /\/(\d{1,})$/;
+        return Number(url.match(regex)[1]);
+    }
 
 }
