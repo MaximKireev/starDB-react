@@ -4,6 +4,7 @@ import {Component} from 'react';
 export default class SwapiService extends Component{
 
     _apiURL = 'https://www.swapi.tech/api';
+    _imgURL = 'https://starwars-visualguide.com/assets/img'
 
      getResources = async (url) => {
         let response= await fetch(`${this._apiURL}${url}`);
@@ -12,12 +13,13 @@ export default class SwapiService extends Component{
         return await response.json();
 
     }
-    async getAllPeople(){
+     getAllPeople = async() =>{
         let people = await this.getResources('/people/').then (res => res.results);
         return people.map(man => this._transformItem(man))
     }
-    getPerson(id){
-        const person = this.getResources(`/people/${id}`).then(res => res.result);
+    getPerson = async (id) =>{
+        const person = await this.getResources(`/people/${id}`).then(res => res.result);
+
         return this._transformItem(person.properties, person.uid)
     }
      getAllPlanets = async() => {
@@ -26,31 +28,40 @@ export default class SwapiService extends Component{
     }
     getPlanet = async (id) => {
         let planet = await this.getResources(`/planets/${id}`).then (res => res.result);
+
         return this._transformItem(planet.properties, planet.uid)
         }
 
 
-    getAllStarships(){
-        const starships = this.getResources('/starships/').then (res => res.results);
+    getAllStarships = async () => {
+        const starships = await this.getResources('/starships/').then (res => res.results);
         return starships.map(starship => this._transformItem(starship))
 
     }
-    getStarship(id){
-        const starship = this.getResources(`/starships/${id}`).then (res => res.result);
+    getStarship = async (id) => {
+        const starship = await this.getResources(`/starships/${id}`).then (res => res.result);
         return this._transformItem(starship.properties, starship.uid)
     }
-    getAllVehicles(){
-        const vehicles = this.getResources('/vehicles/').then (res => res.results);
+    getAllVehicles = async () => {
+        const vehicles = await this.getResources('/vehicles/').then (res => res.results);
         return vehicles.map(vehicle => this._transformItem(vehicle))
     }
-    getVehicle(id){
-        const vehicle = this.getResources(`/vehicles/${id}`).then (res => res.result);
+    getVehicle = async (id) => {
+        const vehicle = await this.getResources(`/vehicles/${id}`).then (res => res.result);
         return this._transformItem(vehicle.properties, vehicle.uid)
+    }
+    getPlanetImage = async (id) => {
+         return await `${this._imgURL}/planets/${id}.jpg`
+    }
+    getPersonImage = async (id) => {
+        return await `${this._imgURL}/characters/${id}.jpg`
+    }
+    getStarshipsImage = async (id) => {
+        return await `${this._imgURL}/starships/${id}.jpg`
     }
 
     _transformItem = (item, uid) => {
 
-        //let id = this._extractId(planet.url)
         return {
             id: item.uid || uid,
             loaded: true,
@@ -75,9 +86,4 @@ export default class SwapiService extends Component{
 
 
     }
-/*    _extractId = (url) => {
-        let regex = /\/(\d{1,})$/;
-        return Number(url.match(regex)[1]);
-    }*/
-
 }

@@ -1,36 +1,30 @@
 import React, {Component} from 'react';
-import ErrorBoundary from '../ErrorComponent/ErrorComponent';
-import Loader from "../Loader/Loader.js";
-import SwapiService from "../SwapiService.js";
 
 
-const ListViewHandler = (component, getDataforList) => {
+const withData = (View, getData) => {
     return class extends Component{
-        swapi = new SwapiService();
         state = {
-            allPlanets: [],
-            selectedPlanet: null,
-            errorOccurred: false,
+            displayData: [],
             loaded: false
         }
-
         componentDidMount() {
-            this.renderAllPlanets();
+            this.renderAllItems();
         }
 
-        async renderAllPlanets(){
-
-            await this.swapi.getAllPlanets().
-            then(res => this.setState({allPlanets: res})).
+        async renderAllItems(){
+            await getData().
+            then(res => this.setState({displayData: res})).
             then(() => this.setState({loaded: true}))
         }
-
         render() {
+
+            const { displayData, loaded } = this.state;
             return (
-                <div></div>
-            );
+                <View {...this.props} displayData = {displayData} loaded = {loaded}/>
+            )
         }
+
+
     }
 }
-
-export default ListViewHandler()
+export {withData}

@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom'
 import './Header.css'
 
 export default class Header extends Component {
     render() {
         return (
             <header className='header-wrapper'>
-                <a className='logo'>SWAPI</a>
+                <Link to = '/' className='logo'>SWAPI</Link>
                 <ul className="main-header-list">
-                    <li className="header-list-item"><a href="">People</a></li>
-                    <li className="header-list-item"><a href="">Planets</a></li>
-                    <li className="header-list-item"><a href="">Starships</a></li>
-                    <li className="header-list-item"><a href="">Vehicles</a></li>
+                    <Link to = '/people/' className="header-list-item">People</Link>
+                    <Link to = '/planets/' className="header-list-item">Planets</Link>
+                    <Link to = '/starships/'className="header-list-item">Starships</Link>
                 </ul>
             </header>
         );

@@ -1,68 +1,30 @@
-import React, {Component} from 'react';
-import SwapiService from "../SwapiService.js";
 import './ItemsList.css'
 import ErrorBoundary from '../ErrorComponent/ErrorComponent.js';
 import Loader from "../Loader/Loader.js";
 
 
+ const ItemsList = (props) => {
 
-export default class ItemsList extends Component {
-
-
-        swapi = new SwapiService();
-        state = {
-            allPlanets: [],
-            selectedPlanet: null,
-            errorOccurred: false,
-            loaded: false
-        }
-
-        componentDidMount() {
-            this.renderAllPlanets();
-        }
-
-   async renderAllPlanets(){
-
-       await this.swapi.getAllPlanets().
-            then(res => this.setState({allPlanets: res})).
-           then(() => this.setState({loaded: true}))
-    }
-
-    render() {
-        const {allPlanets, loaded} = this.state;
-
-
-        const {onPlanetSelected} = this.props;
-
-
+        const {onIdRequest, displayData, loaded} = props;
         return (
             <ErrorBoundary>
-                  {loaded ? <PlanetsListFragment
-                      allPlanets = {allPlanets}
-                      onPlanetSelected = {onPlanetSelected} /> : <Loader />}
+                  {loaded ? <div className="items-list-wrapper w-50">
+                      {displayData.map(item =>
+                          <span
+                             className="list-group-item list-group-item-action"
+                             onClick={() => onIdRequest(item.id)}
+                             key = {item.id}>{item.name}</span>
+                      )}</div> :
+
+                      <Loader />}
             </ErrorBoundary>
         );
-    }
-}
-
-class PlanetsListFragment extends Component{
-
-    render() {
-        const {allPlanets, onPlanetSelected} = this.props;
-        return (
-            <div className="items-list-wrapper">
-                {allPlanets.map(planet =>
-                    <a href="#"
-                       className="list-group-item list-group-item-action"
-                       onClick={() => onPlanetSelected(planet.id)}
-                       key = {planet.id}>{planet.name}</a>
-                )}
-            </div>
-        )
-    }
-
 
 }
+
+export default ItemsList
+
+
 
 
 

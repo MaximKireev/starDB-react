@@ -1,9 +1,8 @@
-.block-wrapper{
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    margin: 50px auto;
-}
 img {
     border-radius: 10px;
+}
+.container{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
 }
