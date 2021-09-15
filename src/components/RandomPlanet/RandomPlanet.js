@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './RandomPlanet.css'
 import SwapiService from "../SwapiService.js";
-import Loader from "../Loader/Loader.js";
+import ItemDetailsLoader from '../Loader/ItemDetailsLoader'
 import ErrorBoundary from '../ErrorComponent/ErrorComponent.js'
 
 
@@ -42,7 +42,7 @@ const {loaded } = this.state;
         <div className='planet-wrapper'>
 
 
-            {loaded ? <PlanetFragment params = {this.state} /> : <Loader />}
+            {loaded ? <PlanetFragment params = {this.state} /> : <ItemDetailsLoader />}
 
         </div>
             </ErrorBoundary>

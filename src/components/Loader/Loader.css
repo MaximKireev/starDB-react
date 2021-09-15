@@ -28,3 +28,38 @@
         transform: rotate(360deg);
     }
 }
+
+
+.loader-wrapper{
+    width: 500px;
+    display: flex;
+
+}
+.loader-img{
+    width: 160px;
+    height: 160px;
+    background-color: #272B30;
+    border-radius: 10px;
+    animation: blink 1s linear infinite;
+}
+
+.loader-item{
+    width: 300px;
+    height: 20px;
+    margin: 25px 0 10px 30px;
+    background-color: #323233;
+    border-radius: 5px;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0%{
+        background-color: #272B30;
+    }
+    50%{
+        background-color: #323233;
+    }
+    100%{
+        background-color: #272B30;
+    }
+}

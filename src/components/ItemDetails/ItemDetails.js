@@ -2,18 +2,22 @@ import React, {Component} from 'react';
 import ErrorBoundary from "../ErrorComponent/ErrorComponent";
 import './ItemDetails.css'
 
+
 export default class ItemsDetails extends Component {
     state = {
-        itemUrl: null
+        loaded: false
     }
+
 
     render() {
         const {item} = this.props;
+
         return (
 
                     <ErrorBoundary>
 
                         <div className='item-details-wrapper'>
+
                             {item?
                                 <React.Fragment>
                                     <img src={item[1]}
