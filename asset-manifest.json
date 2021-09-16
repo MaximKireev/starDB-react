@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/starDB-react/static/css/main.00205090.chunk.css",
+    "main.js": "/starDB-react/static/js/main.a506dbe1.chunk.js",
+    "main.js.map": "/starDB-react/static/js/main.a506dbe1.chunk.js.map",
+    "runtime-main.js": "/starDB-react/static/js/runtime-main.8b8344e3.js",
+    "runtime-main.js.map": "/starDB-react/static/js/runtime-main.8b8344e3.js.map",
+    "static/js/2.3ba3f7d5.chunk.js": "/starDB-react/static/js/2.3ba3f7d5.chunk.js",
+    "static/js/2.3ba3f7d5.chunk.js.map": "/starDB-react/static/js/2.3ba3f7d5.chunk.js.map",
+    "index.html": "/starDB-react/index.html",
+    "static/css/main.00205090.chunk.css.map": "/starDB-react/static/css/main.00205090.chunk.css.map",
+    "static/js/2.3ba3f7d5.chunk.js.LICENSE.txt": "/starDB-react/static/js/2.3ba3f7d5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8b8344e3.js",
+    "static/js/2.3ba3f7d5.chunk.js",
+    "static/css/main.00205090.chunk.css",
+    "static/js/main.a506dbe1.chunk.js"
+  ]
+}
